@@ -1,0 +1,32 @@
+{
+  "name": "fullstack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "server-dev": "nodemon server.js",
+    "heroku-postbuild": " npm install --prefix client && npm install && npm run build:client",
+    "start-dev": "concurrently  \"npm run server\" \"npm run client\"",
+    "build": "netlify deploy --prod",
+    "start": "NODE_ENV=development ./node_modules/.bin/netlify-lambda serve src",
+    "build-dev": "NODE_ENV=production ./node_modules/.bin/netlify-lambda build src",
+    "build:client": "npm run build --prefix client",
+    "server": "node ./server.js",
+    "client": "cd client && cd build && npm run start"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "mongoose": "^7.2.1",
+    "netlify-cli": "^15.3.1",
+    "netlify-lambda": "^2.0.16",
+    "nodemon": "^2.0.22",
+    "serverless-http": "^3.2.0"
+  }
+}
